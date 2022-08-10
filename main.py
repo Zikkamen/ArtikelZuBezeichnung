@@ -39,7 +39,10 @@ def copyToClipboard():
     string_to_copy = getOutputText()
     cmd = 'echo | set /p nul=' + str(string_to_copy) + '| clip'
     os.system(cmd)
-    text = []
+    
+    while len(text) > 0:
+        text.pop()
+
     textVorschau.config(state=NORMAL)
     textVorschau.delete("1.0", END)
     textVorschau.config(state=DISABLED)
